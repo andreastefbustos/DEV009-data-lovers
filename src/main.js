@@ -36,7 +36,9 @@ const generateSection = (id, tittle, clearSection = "yes") => {
 // Esta función genera los li con los nombres de los países y sus respectivas banderas
 const generateCountriesUl = (data, tittle) => {
   const containerList = document.querySelector(`.common-countries-name-ul-${tittle}`);
-  
+
+ 
+
   for (const country of data) {
     const countryName = country.name.common;
     const flagCountry = country.flags.png;
@@ -47,8 +49,24 @@ const generateCountriesUl = (data, tittle) => {
         alt="flag country"
         width="30"/>
         <a href="#">${countryName}</a>
-      </li>`;
+        <div class="country-info-container hidden">
+          <h2>${countryName}</h2>
+          <p>Capital: ${country.capital}</p>
+          <p>Independent: ${country.independent}</p>
+          <!-- <p>Gini: ${country.gini}</p> -->
+          <p>Time Zone: ${country.timezones.join(', ')}</p>
+        </div>
+      </li>
+    `;
     containerList.insertAdjacentHTML("beforeend", html);
+
+    containerList.addEventListener('click', function (event) {
+      const countryItem = event.target.closest('.country-item-li');
+      if (countryItem) {
+        const infoContainer = countryItem.querySelector('.country-info-container');
+        infoContainer.classList.toggle('hidden');
+      }
+    });
   }
 };
 
