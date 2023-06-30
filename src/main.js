@@ -8,7 +8,8 @@ import {
   sortByPopulation,
   sortByArea,
   addPopulationDensity,
-  sortByPopulationDensity
+  sortByPopulationDensity,
+  // averagePopulationDensityByContinent
 } from "./data.js";
 
 const section = document.querySelector(".countries-main");
@@ -36,9 +37,7 @@ const generateSection = (id, tittle, clearSection = "yes") => {
 // Esta función genera los li con los nombres de los países y sus respectivas banderas
 const generateCountriesUl = (data, tittle) => {
   const containerList = document.querySelector(`.common-countries-name-ul-${tittle}`);
-
- 
-
+  
   for (const country of data) {
     const countryName = country.name.common;
     const flagCountry = country.flags.png;
@@ -50,22 +49,24 @@ const generateCountriesUl = (data, tittle) => {
         width="30"/>
         <a href="#">${countryName}</a>
         <div class="country-info-container hidden">
-          <h2>${countryName}</h2>
+          <h2>${country.name.common}</h2>
           <p>Capital: ${country.capital}</p>
-          <p>Independent: ${country.independent}</p>
-          <!-- <p>Gini: ${country.gini}</p> -->
+          <p>Gini: ${country.gini}</p>
           <p>Time Zone: ${country.timezones.join(', ')}</p>
-        </div>
+          </div>
       </li>
-    `;
+      `;
     containerList.insertAdjacentHTML("beforeend", html);
 
-    containerList.addEventListener('click', function (event) {
-      const countryItem = event.target.closest('.country-item-li');
-      if (countryItem) {
-        const infoContainer = countryItem.querySelector('.country-info-container');
+    // Obtener todos los elementos <li> recién insertados
+    const countryItems = containerList.querySelectorAll('.country-item-li');
+
+    // Agregar evento de clic a cada elemento <li>
+    countryItems.forEach((countryItem) => {
+      countryItem.addEventListener('click', function () {
+        const infoContainer = this.querySelector('.country-info-container');
         infoContainer.classList.toggle('hidden');
-      }
+      });
     });
   }
 };
@@ -269,7 +270,7 @@ window.addEventListener("load", () => {
     
     // Se agrega el evento al icono de la flecha 
     iconArrow.addEventListener('click', () => {
-      sortOrderType=sortOrderType*-1
+      sortOrderType = sortOrderType * -1
       switch (filterKind) {
       case "area": {
         countriesSortedBy = sortByArea(countries, sortOrderType);
@@ -352,13 +353,17 @@ window.addEventListener("load", () => {
 // const countriesByG = filterByLetter(countries.countries, "G");
 // console.log(countriesByG);
 
-// const countriesSortedByPopulationDown = sortByPopulation(countries, -1);
+// const temCountries = countries.countries.slice()
+// const temCountries2 = countries.countries.slice()
+
+// const countriesSortedByPopulationDown = sortByPopulation(temCountries, -1);
 // console.log("Sorted by population down");
 // console.log(countriesSortedByPopulationDown);
 
-// const countriesSortedByPopulationUp = sortByPopulation(countries, 1);
+// const countriesSortedByPopulationUp = sortByPopulation(temCountries2, 1);
 // console.log("Sorted by population up");
 // console.log(countriesSortedByPopulationUp);
+// console.log(typeof(countriesSortedByPopulationUp));
 
 // const countruiessortedByAreaUp = sortByArea(countries, 1);
 // console.log("Sorted by area up");
@@ -389,4 +394,7 @@ window.addEventListener("load", () => {
 
 // console.log("Filter by population density down");
 // console.log(sortByPopulation(countries, -1));
+
+// console.log("America average population density")
+// console.log(Math.trunc(averagePopulationDensityByContinent(countries.countries, "America")))
 ////////////////   aque terminan pruebas de filtros   //////////////////
