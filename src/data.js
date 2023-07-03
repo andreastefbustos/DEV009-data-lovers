@@ -120,7 +120,7 @@ const sortByPopulationDensity = (data, sortOrder) => {
 
 const averagePopulationDensityByContinent = (data,continent) => {
   const countriesByContinent = filterByContinents(data,continent);
-  return countriesByContinent.reduce((sum,country) => sum + country.populationDensity,0) / countriesByContinent.length; 
+  return Math.trunc(countriesByContinent.reduce((sum,country) => sum + country.populationDensity,0) / countriesByContinent.length); 
 };
 
 const filterPopulationDensityByContinent = (data,continent) => {

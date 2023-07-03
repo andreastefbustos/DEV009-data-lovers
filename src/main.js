@@ -9,6 +9,7 @@ import {
   sortByPopulationDensity,
   sortByPopulation,
   sortByArea,
+  averagePopulationDensityByContinent,
 } from "./data.js";
 
 const toggleButton=document.querySelector(".toggleButton");
@@ -16,6 +17,7 @@ const section = document.querySelector(".countries-main");
 const countryInput = document.getElementById("country-input");
 const allLetters = document.querySelector(".active");
 const continentList = document.querySelectorAll(".continent-name-li");
+const continentLisPD=document.querySelectorAll(".continent-name-PD-li");
 const languageList = document.querySelectorAll(".language-li");
 const subRegionsList = document.querySelectorAll('.subregion-li');
 const sortList = document.querySelectorAll('.sort-li');
@@ -52,6 +54,10 @@ toggleButton.addEventListener('click', () => {
 continentList.forEach((element) => {
   element.addEventListener('click', closeAsideAndShowInfo);
 });
+
+continentLisPD.forEach(element=>{
+  element.addEventListener('click',closeAsideAndShowInfo);
+})
 
 languageList.forEach((element) => {
   element.addEventListener('click', closeAsideAndShowInfo);
@@ -231,6 +237,58 @@ const handleLanguageClick = (actualLanguage, actualTittle) => {
   generateCountriesUl(languageCountriesList, actualLanguage);
 };
 
+continentLisPD.forEach((continentPD)=>{
+  continentPD.addEventListener('click',()=>{
+    const actualContinent=continentPD.dataset.id;
+    // const actualTittle=continentPD.getAttribute('tittle');
+    handleContinentPDClick(actualContinent);
+  })
+});
+
+const handleContinentPDClick=(actualContinent)=>{
+  const continentAveragePopulationDensity=averagePopulationDensityByContinent(countries.countries,actualContinent);
+  const continentCountries=filterByContinents(countries.countries,actualContinent);
+
+
+  section.innerHTML='';
+  containerTable.innerHTML='';
+  
+  const htmlTittleTablePD=
+  `<div class="table-tittle">
+    <h3>${actualContinent} Average population Density = ${continentAveragePopulationDensity} persons/Km<sup>2</sup></h3>
+  </div>
+  <div class="table-row">
+    <div class="col-table col1 col-tittle">Country</div>
+    <div class="col-table col2 col-tittle">Population Density</div>
+  </div>`;
+
+  containerTable.insertAdjacentHTML("beforeend", htmlTittleTablePD);
+  containerTable.style.display='block';
+
+
+  continentCountries.forEach(country=>{
+    const countryName=country.name.common;
+    const populationDensity=country.populationDensity;
+    const flagCountry=country.flags.png;
+
+    const htmlRowTable =`
+    <div class="table-row">
+      <div class="col-table col1 col-list">
+        <ul class="inline-list">
+          <li><img class="flag-country"
+          src="${flagCountry}" 
+          alt="flag country" 
+          width="30"/>
+          </li>
+          <li><a href="#">${countryName}</a></li>
+        </ul>
+      </div>
+      <div class="col-table col2 col2-content">${populationDensity} </div>
+    </div>`
+    containerTable.insertAdjacentHTML("beforeend", htmlRowTable);
+  })
+}
+
 continentList.forEach((continent) => {
   continent.addEventListener("click", () => {
     const actualContinent = continent.getAttribute("id");
@@ -254,18 +312,19 @@ subRegionsList.forEach((subregion) => {
   })
 })
 
-let sortOrderType;
-
 const handleSubRegionClick = (actualSubRegion,actualTittle) => {
   const subRegionsCountriesList = filterBySubregion(countries.countries,actualTittle);
   // console.log(subRegionsCountriesList);
   generateSection(actualSubRegion,actualTittle);
   generateCountriesUl(subRegionsCountriesList,actualSubRegion);
-}
+};
 
+
+
+
+let sortOrderType;
 let actualFilter;
 let actualTittle;
-
 
 window.addEventListener("load", () => {
   
@@ -276,7 +335,7 @@ window.addEventListener("load", () => {
       handleFilterClick(actualFilter,actualTittle);
     })
   });
-  
+
   const handleFilterClick = (actualFilter,actualTittle) => {
     containerTable.innerHTML = '';
     let countriesSortBy;
@@ -345,8 +404,8 @@ window.addEventListener("load", () => {
     });
   
     data.forEach((country) => {
-      const filterVarArea = country.area;
-      const filterVarPopulation = country.population;
+      const filterVarArea = country.area.toLocaleString('en-US');
+      const filterVarPopulation = country.population.toLocaleString('en-US');
       const filterVarPopulationDensity = country.populationDensity;
       const countryName = country.name.common;
       const flagCountry = country.flags.png;
@@ -390,6 +449,12 @@ window.addEventListener("load", () => {
 ///////////////////////////////////////////////////////////////////////
 
 /////////////           Test para los filtros           ///////////////
+
+const americaCountries=filterByContinents(countries.countries,'America')
+console.log(americaCountries);
+console.log(averagePopulationDensityByContinent(countries.countries,'America'));
+
+
 
 // let countriesSortedByPopulationUp;
 
