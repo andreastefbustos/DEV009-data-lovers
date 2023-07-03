@@ -255,7 +255,7 @@ const handleContinentPDClick=(actualContinent)=>{
   
   const htmlTittleTablePD=
   `<div class="table-tittle">
-    <h3>${actualContinent} Average population Density = ${continentAveragePopulationDensity} persons/Km<sup>2</sup></h3>
+    <h3 class='h3-table'>${actualContinent} Average population Density = ${continentAveragePopulationDensity} persons/Km<sup>2</sup></h3>
   </div>
   <div class="table-row">
     <div class="col-table col1 col-tittle">Country</div>

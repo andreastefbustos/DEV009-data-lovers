@@ -13,6 +13,10 @@ body {
   margin: 2px 2px;
 }
 
+.h3-table{
+  text-align: center;
+}
+
 .toggleButton{
   border: none;
   background-color: rgba(245, 245, 245, 0.1);
@@ -64,14 +68,32 @@ header{
   right: 5px;
 }
 
-ul.alphabet-list {
+/* ul.alphabet-list {
   display: flex;
   list-style: none;
   background-color: #ffffff;
   width: 60%;
+  justify-content: space-evenly; /*reparte el espacio equitativamente 
+  padding: 10px;
+} */
+
+ul.alphabet-list {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  list-style: none;
+  background-color: #ffffff;
+  width: 95%;
   justify-content: space-evenly; /*reparte el espacio equitativamente */
   padding: 10px;
 }
+
+.alphabet-item:hover {
+  text-decoration: underline;
+  font-size: 30px;
+}
+
+
 
 #country-input {
   position: absolute;
@@ -656,6 +678,7 @@ ul.alphabet-list li.active {
 
 .alphabet-item:hover {
   text-decoration: underline;
+  font-size: 40px;
 }
 
 article.countries-container {
