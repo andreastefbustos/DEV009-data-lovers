@@ -93,8 +93,6 @@ ul.alphabet-list {
   font-size: 30px;
 }
 
-
-
 #country-input {
   position: absolute;
   top: 10px;
@@ -637,7 +635,7 @@ li a {
   .side-bar-aside.show {
     left: 0;
     background-color: #353740;
-    width: fit-content;
+    width: 200px;
     height: 560px;
     margin-top: 0;
     overflow-y: scroll;

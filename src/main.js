@@ -12,7 +12,7 @@ import {
   averagePopulationDensityByContinent,
 } from "./data.js";
 
-const toggleButton=document.querySelector(".toggleButton");
+const toggleButton = document.querySelector(".toggleButton");
 const section = document.querySelector(".countries-main");
 const countryInput = document.getElementById("country-input");
 const allLetters = document.querySelector(".active");
@@ -21,8 +21,8 @@ const continentLisPD=document.querySelectorAll(".continent-name-PD-li");
 const languageList = document.querySelectorAll(".language-li");
 const subRegionsList = document.querySelectorAll('.subregion-li');
 const sortList = document.querySelectorAll('.sort-li');
-const sideBarAside=document.querySelector('.side-bar-aside');
-const containerTable=document.querySelector('.container-table');
+const sideBarAside = document.querySelector('.side-bar-aside');
+const containerTable = document.querySelector('.container-table');
 const mobileMenuContainer = document.querySelector('.mobile-menu-container');
 
 
@@ -200,7 +200,6 @@ allLetters.addEventListener('click',() => {
 const alphabet = generateAlphabet();
 const alphabetContainer = document.querySelector(".alphabet-list");
 
-
 // Genera la barra de navegación por letras
 alphabet.forEach((letter) => {
   const htmlAlphabetList = `<li class="alphabet-item letter" id="${letter}">${letter}</li>`;
@@ -222,7 +221,8 @@ const handleLetterClick = (actualLetter, actualTittle) => {
   generateSection(actualLetter, actualTittle);
   generateCountriesUl(letterCountriesList, actualLetter);
 };
-  
+
+// Funcionalidad para lenguaje
 languageList.forEach((language) => {
   language.addEventListener("click", () => {
     const actualLanguage = language.getAttribute("id");
@@ -237,21 +237,22 @@ const handleLanguageClick = (actualLanguage, actualTittle) => {
   generateCountriesUl(languageCountriesList, actualLanguage);
 };
 
-continentLisPD.forEach((continentPD)=>{
-  continentPD.addEventListener('click',()=>{
+// Funcionalidad para los continentes
+continentLisPD.forEach((continentPD) => {
+  continentPD.addEventListener('click',() => {
     const actualContinent=continentPD.dataset.id;
     // const actualTittle=continentPD.getAttribute('tittle');
     handleContinentPDClick(actualContinent);
   })
 });
 
-const handleContinentPDClick=(actualContinent)=>{
-  const continentAveragePopulationDensity=averagePopulationDensityByContinent(countries.countries,actualContinent);
-  const continentCountries=filterByContinents(countries.countries,actualContinent);
+const handleContinentPDClick = (actualContinent) => {
+  const continentAveragePopulationDensity = averagePopulationDensityByContinent(countries.countries,actualContinent);
+  const continentCountries = filterByContinents(countries.countries,actualContinent);
 
 
-  section.innerHTML='';
-  containerTable.innerHTML='';
+  section.innerHTML = '';
+  containerTable.innerHTML = '';
   
   const htmlTittleTablePD=
   `<div class="table-tittle">
@@ -263,13 +264,13 @@ const handleContinentPDClick=(actualContinent)=>{
   </div>`;
 
   containerTable.insertAdjacentHTML("beforeend", htmlTittleTablePD);
-  containerTable.style.display='block';
+  containerTable.style.display = 'block';
 
 
-  continentCountries.forEach(country=>{
-    const countryName=country.name.common;
-    const populationDensity=country.populationDensity;
-    const flagCountry=country.flags.png;
+  continentCountries.forEach(country => {
+    const countryName = country.name.common;
+    const populationDensity = country.populationDensity;
+    const flagCountry = country.flags.png;
 
     const htmlRowTable =`
     <div class="table-row">
@@ -303,6 +304,7 @@ const handleContinentClick = (actualContinent, actualTittle) => {
   generateCountriesUl(continentCountriesList, actualContinent);
 };
 
+// Funcionalidad para Sub-Region
 subRegionsList.forEach((subregion) => {
   subregion.addEventListener('click',() => {
     // const actualId=subregion.getAttribute('id');
@@ -319,9 +321,7 @@ const handleSubRegionClick = (actualSubRegion,actualTittle) => {
   generateCountriesUl(subRegionsCountriesList,actualSubRegion);
 };
 
-
-
-
+// Funcionalidad para generar population, area y population density
 let sortOrderType;
 let actualFilter;
 let actualTittle;
@@ -450,11 +450,9 @@ window.addEventListener("load", () => {
 
 /////////////           Test para los filtros           ///////////////
 
-const americaCountries=filterByContinents(countries.countries,'America')
-console.log(americaCountries);
-console.log(averagePopulationDensityByContinent(countries.countries,'America'));
-
-
+// const americaCountries=filterByContinents(countries.countries,'America')
+// console.log(americaCountries);
+// console.log(averagePopulationDensityByContinent(countries.countries,'America'));
 
 // let countriesSortedByPopulationUp;
 

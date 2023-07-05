@@ -90,7 +90,7 @@ const sortByArea = (data, sortOrder) => {
   return result;
 };
 
-// La función me calcula la densidad poblacion y la adiciona como parametro key al objeto countries
+// La función calcula la densidad poblacion y la adiciona como parametro key al objeto countries
 const addPopulationDensity = (data) => {
   data.map((country) => {
     country.populationDensity = Math.trunc(country.population/country.area);
