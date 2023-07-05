@@ -309,7 +309,7 @@ Estos tests nos proporcionaron valiosa retroalimentación sobre la usabilidad de
 
 Gracias a la utilización de la página real en los tests de usabilidad, obtuvimos una retroalimentación más precisa y relevante. Esto nos permitió tomar decisiones informadas y realizar mejoras concretas en el diseño, la navegación y la funcionalidad del sitio web de Countries.
 
-El test se realizó por medio de la herramienta Jotform: [Test Countries]([Figma-Mobile](https://www.figma.com/proto/6dInw57EZ80kufTQlwPLwC/Mobile?type=design&node-id=6-322&scaling=scale-down&page-id=0%3A1&starting-point-node-id=2%3A206))
+El test se realizó por medio de la herramienta Jotform: [Test Countries](https://form.jotform.com/231811029930248)
 
 **Las preguntas realizadas fueron:**
 
