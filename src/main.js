@@ -87,54 +87,126 @@ const generateSection = (id, tittle, clearSection = "yes") => {
 
 };
 
+// Otra manera de realizar las etiquetas HTML
+// const generateSection = (id, title, clearSection = "yes") => {
+//   if (clearSection === "yes") {
+//     section.innerHTML = "";
+//   }
+//   containerTable.style.display = 'none';
+
+//   const sectionElement = document.createElement("section");
+//   sectionElement.classList.add(`section-${title}`);
+
+//   const titleElement = document.createElement("h3");
+//   titleElement.textContent = title;
+
+//   const ulElement = document.createElement("ul");
+//   ulElement.classList.add(`common-countries-name-ul-${id}`);
+//   ulElement.classList.add("common-countries");
+//   ulElement.setAttribute("id", `common-countries-name-ul-${id}`);
+//   sectionElement.appendChild(titleElement);
+//   sectionElement.appendChild(ulElement);
+  
+//   section.appendChild(sectionElement);
+//   section.style.backgroundColor = 'rgba(245, 245, 245, 0.7)';
+// };
+
+
 // Esta función genera los li con los nombres de los países y sus respectivas banderas
+// const generateCountriesUl = (data, tittle) => {
+//   const containerList = document.querySelector(`.common-countries-name-ul-${tittle}`);
+  
+//   for (const country of data) {
+//     const countryName = country.name.common;
+//     const flagCountry = country.flags.png;
+//     const html = `
+//       <li class="country-item-li"><img
+//         class="flag-country"
+//         src="${flagCountry}"
+//         alt="flag country"
+//         width="30"/>
+//         <a href="#">${countryName}</a>
+//         <div class="country-info-container hidden">
+//           <p>Capital: ${country.capital}</p>
+//           <p>Independent: ${country.independent}</p>
+//           <p>Time Zone: ${country.timezones.join(', ')}</p>
+//         </div>
+//       </li>
+//       `;
+//     containerList.insertAdjacentHTML("beforeend", html);
+
+//     // Obtener todos los elementos <li> recién insertados
+//     // const countryItems = containerList.querySelectorAll('.country-item-li');
+
+//     // Agregar evento de clic a cada elemento <li>
+//     // countryItems.forEach((countryItem) => {
+//     //   countryItem.addEventListener('click', function () {
+//     //     const infoContainer = this.querySelector('.country-info-container');
+//     //     if(infoContainer.classList.contains('hidden')) {
+//     //       infoContainer.classList.remove('hidden'); // Mostrar la información 
+//     //     } else {
+//     //       infoContainer.classList.add('hidden'); // Ocultar la información
+//     //     }
+//     //   });
+//     // });
+
+//     // Otra opción para arreglar el problema
+//     containerList.addEventListener('click', function (event) {
+//       const clickedElement = event.target;
+//       if (clickedElement.classList.contains('country-item-li')) {
+//         const infoContainer = clickedElement.querySelector('.country-info-container');
+//         infoContainer.classList.toggle('hidden'); // Mostrar u ocultar la información del país
+//       }
+//     });
+//   }
+// };
+
+// Otra manera de realizar las etiquetas HTML
 const generateCountriesUl = (data, tittle) => {
   const containerList = document.querySelector(`.common-countries-name-ul-${tittle}`);
-  
+
   for (const country of data) {
     const countryName = country.name.common;
     const flagCountry = country.flags.png;
-    const html = `
-      <li class="country-item-li"><img
-        class="flag-country"
-        src="${flagCountry}"
-        alt="flag country"
-        width="30"/>
-        <a href="#">${countryName}</a>
-        <div class="country-info-container hidden">
-          <p>Capital: ${country.capital}</p>
-          <p>Independent: ${country.independent}</p>
-          <p>Time Zone: ${country.timezones.join(', ')}</p>
-        </div>
-      </li>
-      `;
-    containerList.insertAdjacentHTML("beforeend", html);
 
-    // Obtener todos los elementos <li> recién insertados
-    // const countryItems = containerList.querySelectorAll('.country-item-li');
+    const liElement = document.createElement("li");
+    liElement.classList.add("country-item-li");
 
-    // Agregar evento de clic a cada elemento <li>
-    // countryItems.forEach((countryItem) => {
-    //   countryItem.addEventListener('click', function () {
-    //     const infoContainer = this.querySelector('.country-info-container');
-    //     if(infoContainer.classList.contains('hidden')) {
-    //       infoContainer.classList.remove('hidden'); // Mostrar la información 
-    //     } else {
-    //       infoContainer.classList.add('hidden'); // Ocultar la información
-    //     }
-    //   });
-    // });
+    const imgElement = document.createElement("img");
+    imgElement.classList.add("flag-country");
+    imgElement.src = flagCountry;
+    imgElement.alt = "flag country";
+    imgElement.width = "30";
 
-    // Otra opción para arreglar el problema
-    containerList.addEventListener('click', function (event) {
-      const clickedElement = event.target;
-      if (clickedElement.classList.contains('country-item-li')) {
-        const infoContainer = clickedElement.querySelector('.country-info-container');
-        infoContainer.classList.toggle('hidden'); // Mostrar u ocultar la información del país
-      }
+    const aElement = document.createElement("a");
+    aElement.href = "#";
+    aElement.textContent = countryName;
+
+    const divElement = document.createElement("div");
+    divElement.classList.add("country-info-container");
+    divElement.classList.add("hidden");
+
+    const capitalElement = document.createElement("p");
+    capitalElement.textContent = `Capital: ${country.capital}`;
+
+    const independentElement = document.createElement("p");
+    independentElement.textContent = `Independent: ${country.independent}`;
+
+    const timezonesElement = document.createElement("p");
+    timezonesElement.textContent = `Time Zone: ${country.timezones.join(", ")}`;
+
+    divElement.append(capitalElement, independentElement, timezonesElement);
+    liElement.append(imgElement, aElement, divElement);
+    containerList.appendChild(liElement);
+
+    // Agregar evento de clic al elemento <li>
+    liElement.addEventListener("click", function () {
+      const infoContainer = this.querySelector(".country-info-container");
+      infoContainer.classList.toggle("hidden"); // Mostrar u ocultar la información del país
     });
   }
 };
+
 
 // Esta función genera la section de los countries con sus respectivas li que contienen los nombres comunes y la imagen de la bandera
 const generatesCountriesList = () => {

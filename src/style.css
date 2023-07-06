@@ -479,8 +479,7 @@ li a {
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 1000px) {
-  
+/* @media screen and (min-width: 600px) and (max-width: 1000px) {
   .toggleButton{
     border: none;
     background-color: rgba(245, 245, 245, 0.1);
@@ -489,22 +488,29 @@ li a {
     left:10px;
     display: block;
   }
-  
-  .tittle-header{
+
+  .title-heading {
     font-size: xx-large;
+    height: 50px;
+    margin: 10px auto;
+    background-color: #ffffff;
   }
 
   #country-input {
     position: absolute;
     top: 10px;
     right: 5px;
-    background-position: 3px 12px; /*Position the search icon */
+    background-position: 5px 12px; 
     background-size: 15px;
-    width: 150px; /* Full-width */
-    font-size: 15px; /* Increase font-size */
-    padding: 12px 10px 6px 20px; /* Add some padding */
-    margin-bottom: 12px; /* Add some space below the input */
+    width: 110px; 
+    font-size: 12px; 
+    padding: 12px 10px 6px 20px; 
+    margin-bottom: 12px;
     margin: 2px, auto;
+  }
+
+  .countries-container {
+    justify-content: center;
   }
 
   .alphabet-section {
@@ -518,7 +524,7 @@ li a {
     background-color: #ffffff;
     font-size: 16px;
     width: 50%;
-    justify-content: space-evenly; /*reparte el espacio equitativamente */
+    justify-content: space-evenly; 
     padding: 5px;
     z-index: 2;
   }
@@ -536,8 +542,9 @@ li a {
 
   .search-section {
     display: flex;
+    position: absolute;
     border: none;
-    width: 70%px;
+    width: 70%;
     height: 30px;
     opacity: 60%;
     display: block;
@@ -545,18 +552,13 @@ li a {
     z-index: 2;
   }
 
-  .alphabet-section {
-    background-color: #ffffff;
-    width: 70%;
-  }
-
   h3 {
     font-family: stoke;
-    font-size: 24px;
+    font-size: 36px;
     margin-top: 10px;
     margin-bottom: 10px;
   }
- 
+
   ul#common-countries {
     list-style: none;
     column-count: 1;
@@ -568,16 +570,17 @@ li a {
     margin: 5px;
     display: block;
     background-color: #f6f6f6;
-    text-decoration: none; /* Remove default text underline */
-    font-size: 12px; /* Increase the font-size */
-    color: black; /* Add a black text color */
+    padding: 12px; 
+    text-decoration: none; 
+    font-size: 16px; 
+    color: black;
   }
 
   li a {
-    margin-top: -1px; /* Prevent double borders */
-    /* padding: 12px; Add some padding */
-    text-decoration: none; /* Remove default text underline */
-    font-size: 16px; /* Increase the font-size */
+    margin-top: -1px; 
+    padding: 12px;
+    text-decoration: none; 
+    font-size: 24px; 
     color: #000000;
   }
 
@@ -593,7 +596,7 @@ li a {
     position: absolute;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    margin-left:60px;
+    margin-left: 30px;
     padding: 2px 20px 20px 20px;
     margin-top: -20px;
     z-index: 1;
@@ -607,6 +610,7 @@ li a {
     opacity: 60%;
     display: block;
     margin: 0 auto;
+    z-index: 2;
   }
 
   .mobile-menu-container {
@@ -633,6 +637,7 @@ li a {
   }
 
   .side-bar-aside.show {
+    position: relative;
     left: 0;
     background-color: #353740;
     width: 200px;
@@ -643,6 +648,7 @@ li a {
     padding: 20px;
     border: 1px solid #ccc;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    z-index: 1;
   }
 
   .mobile-menu-container.show {
@@ -651,6 +657,300 @@ li a {
 
   .show {
     display: block;
+  }
+
+  .icon-arrow {
+    z-index: 2;
+  }
+
+  .hidden {
+    display: none;
+    z-index: 2;
+  }
+  
+  .row {
+    display: flex;
+    grid-template-columns: 4fr 0.5fr;
+    margin: 10px 30px;
+    gap: 75px;
+    margin-bottom: 60px;
+    align-items: self-start;
+    justify-content: space-between;
+  }
+
+  .col1{
+    padding-left: 5px;
+  }
+
+  .col2-content{
+    font-size: 12px;
+  }
+
+  ul.common-countries{
+    list-style: none;
+    column-count: 1;
+    padding: 0px 2px 2px 2px;
+    margin: 0px 3px 30px 3px;
+  }
+
+
+  .table-tittle{
+    font-size: 10px;
+  }
+
+  .sort-img{
+    width: 20px;
+  }
+
+  .flag-country{
+    width: 20px;
+  }
+
+  .table-row {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  .table-row {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 2fr 0.5fr;
+    column-gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+  }
+} */
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  .toggleButton{
+    border: none;
+    background-color: rgba(245, 245, 245, 0.1);
+    position: absolute;
+    top:20px;
+    left:10px;
+    display: block;
+  }
+
+  .title-heading {
+    font-size: x-large;
+    height: 50px;
+    margin: 10px auto;
+    background-color: #ffffff;
+  }
+
+  #country-input {
+    top: 10px;
+    right: 5px;
+    background-position: 5px 12px; /*Position the search icon */
+    background-size: 15px;
+    width: 110px; /* Full-width */
+    font-size: 12px; /* Increase font-size */
+    padding: 12px 10px 6px 20px; /* Add some padding */
+    margin-bottom: 12px; /* Add some space below the input */
+    margin: 2px, auto;
+  }
+
+  .countries-container {
+    justify-content: center;
+  }
+
+  ul#common-countries {
+    list-style: none;
+    column-count: 1;
+    padding: 0px 2px 2px 2px;
+    margin: 0px 3px 30px 3px;
+  }
+
+  h3 {
+    margin: 0;
+    padding-left: 10px;
+    font-size: 24px;
+  }
+
+  li.country-item-li {
+    margin: 5px;
+    display: block;
+    background-color: #f6f6f6;
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 16px; /* Increase the font-size */
+    color: black; /* Add a black text color */
+  }
+
+  .countries-main {
+    margin-top: 0;
+    background-color: #f6f6f6;
+  }
+
+  .search-section {
+    border: none;
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    top:10px;
+    right: 5px;
+  }
+
+  ul.alphabet-list {
+    display: flex;
+    list-style: none;
+    background-color: #ffffff;
+    font-size: 12px;
+    width: 50%;
+    justify-content: space-evenly; /*reparte el espacio equitativamente */
+    /* align-items: center; */
+    padding: 5px;
+  }
+
+  .alphabet-section {
+    background-color: #ffffff;
+    width: 70%;
+  }
+
+  .letter {
+    font-size: 16px;
+  }
+
+
+  /* .alphabet-item {
+    z-index: 4;
+  } */
+
+  .row {
+    display: flex;
+    grid-template-columns: 4fr 0.5fr;
+    margin: 10px 30px;
+    gap: 75px;
+    margin-bottom: 60px;
+    align-items: self-start;
+    justify-content: space-between;
+  }
+
+  .col1{
+    padding-left: 5px;
+  }
+
+  .col2-content{
+    font-size: 12px;
+  }
+
+  ul.common-countries{
+    list-style: none;
+    column-count: 1;
+    padding: 0px 2px 2px 2px;
+    margin: 0px 3px 30px 3px;
+  }
+
+  li a {
+    margin-top: -1px; /* Prevent double borders */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 12px; /* Increase the font-size */
+    color: #000000;
+  }
+
+  .table-tittle{
+    font-size: 10px;
+  }
+
+  .sort-img{
+    width: 20px;
+  }
+
+  .flag-country{
+    width: 20px;
+  }
+
+  .table-row {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  .table-row {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 2fr 0.5fr;
+    column-gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  .search-section {
+    border: none;
+    width: 70%;
+    height: 30px;
+    opacity: 60%;
+    display: block;
+    margin: 0 auto;
+    z-index: 2;
+  }
+
+  .side-bar-aside {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    transition: left 0.3s ease-in-out;
+    z-index: 9999;
+    display: none;
+  }
+
+  .side-bar-aside.show {
+    position: relative;
+    left: 0;
+    background-color: #353740;
+    width: 200px;
+    height: 560px;
+    margin-top: 0;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    padding: 20px;
+    border: 1px solid #ccc;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    z-index: 1;
+  }
+
+  .mobile-menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    overflow: hidden;
+    z-index: 3;
+  }
+
+  .mobile-menu-container.show {
+    overflow: auto;
+  }
+
+  .show {
+    display: block;
+  }
+
+  ul.dropdown-content {
+    background-color: #353740;
+    color: #eee;
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-left:30px;
+    padding: 2px 20px 20px 20px;
+    margin-top: -20px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7)
   }
 
   .icon-arrow {
